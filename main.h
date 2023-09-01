@@ -13,6 +13,7 @@ struct CelluleForet {
     char type;
     int etat;
     int degre;
+
 };
 
 

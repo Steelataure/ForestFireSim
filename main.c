@@ -19,8 +19,8 @@ void initialiserForetAleatoirement(struct CelluleForet foret[][100], struct Tail
 
     for (int i = 0; i < taille.longueur; i++) {
         for (int j = 0; j < taille.largeur; j++) {
-            char typesPossibles[] = {'+', '*', ' ', '#', 'x', '/', '-', '@'};
-            int indexType = rand() % 8;
+            char typesPossibles[] = {'+', '*', ' ', '#', 'x', '/'};
+            int indexType = rand() % 6;
             foret[i][j].type = typesPossibles[indexType];
             foret[i][j].etat = 0;
             foret[i][j].degre = 0;
@@ -45,13 +45,26 @@ void typeManuel(struct CelluleForet foret[][100], struct TailleMatrice taille) {
             scanf(" %c", &foret[i][j].type);
 
             foret[i][j].etat = 0;
-            foret[i][j].degre = 0;
+            if (foret[i][j].type == '*') {
+                foret[i][j].degre = 4;
+            } else if (foret[i][j].type == 'x') {
+                foret[i][j].degre = 3;
+            } else if (foret[i][j].type == '" "') {
+                foret[i][j].degre = 2;
+            } else if (foret[i][j].type == '-') {
+                foret[i][j].degre = 1;
+            } else if (foret[i][j].type == '#') {
+                foret[i][j].degre = 5;
+            } else {
+                foret[i][j].degre = 0;
+            }
         }
     }
 }
 
 int main() {
     int automatique_or_manuel;
+    int nb_iterations;
 
     struct TailleMatrice tailleMatrice = demanderTailleMatrice();
     struct CelluleForet foret[100][100];
@@ -64,10 +77,13 @@ int main() {
     }
     else if (automatique_or_manuel == 1){
         initialiserForetAleatoirement(foret, tailleMatrice);
-
     }
-
     afficherMatrice(foret, tailleMatrice);
+
+
+    printf("Veuillez choisir le nombre d'iterations : ");
+    scanf("%d", &nb_iterations);
+
 
     return 0;
 }
