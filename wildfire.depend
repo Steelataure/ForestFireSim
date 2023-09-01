@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1693569735 source:c:\users\alexa\documents\wildfire\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	"main.h"
+
+1693567027 c:\users\alexa\documents\wildfire\main.h
+
