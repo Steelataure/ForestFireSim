@@ -16,18 +16,36 @@ void simulerPropagationFeu(struct CelluleForet foret[][100], struct TailleMatric
     for (int iter = 0; iter < nb_iterations; iter++) {
         for (int i = 0; i < taille.longueur; i++) {
             for (int j = 0; j < taille.largeur; j++) {
-                if (foret[i][j].etat == 1) {
-                    // Appliquer les règles pour la cellule en feu
-                    // Par exemple, mettre la cellule en cendres si nécessaire
-                } else {
-                    // Appliquer les règles pour les cellules non en feu
-                    // Par exemple, vérifier les voisins pour la propagation du feu
+                //printf("%d %d \n", foret[i][j].degre, foret[i][j].etat);
+                if (foret[i][j].etat == 1 && foret[i][j].degre == 2) {
+                   foret[i][j].etat = 0;
+                   foret[i][j].type = '-';
+                }
+                if (foret[i][j].type == '-') {
+                    foret[i][j].type = '@';
+                }
+
+                if (foret[i][j].type == '#' || foret[i][j].type == 'x' || foret[i][j].type == '*' || foret[i][j].type == ' ') {
+
+                    if ((i > 0 && j > 0 && foret[i - 1][j - 1].etat == 1) ||
+                        (i > 0 && foret[i - 1][j].etat == 1) ||
+                        (i > 0 && j < taille.largeur - 1 && foret[i - 1][j + 1].etat == 1) ||
+                        (j > 0 && foret[i][j - 1].etat == 1) ||
+                        (j < taille.largeur - 1 && foret[i][j + 1].etat == 1) ||
+                        (i < taille.longueur - 1 && j > 0 && foret[i + 1][j - 1].etat == 1) ||
+                        (i < taille.longueur - 1 && foret[i + 1][j].etat == 1) ||
+                        (i < taille.longueur - 1 && j < taille.largeur - 1 && foret[i + 1][j + 1].etat == 1)) {
+                            foret[i][j].etat = 1;
+                            foret[i][j].degre -= 1;
+                    }
+                }
+                if (foret[i][j].etat == 1 &&  foret[i][j].degre > 2) {
+                    foret[i][j].degre -= 1;
                 }
             }
         }
 
         memcpy(foretSuivante, foret, sizeof(foret));
-
         afficherMatrice(foret, taille);
         printf("-----------------------------------------------\n");
     }
@@ -36,9 +54,9 @@ void simulerPropagationFeu(struct CelluleForet foret[][100], struct TailleMatric
 
 void mettreCelluleEnFeu(struct CelluleForet foret[][100], int ligne, int colonne, struct TailleMatrice tailleMatrice) {
     if (ligne >= 0 && ligne < tailleMatrice.longueur && colonne >= 0 && colonne < tailleMatrice.largeur) {
-        foret[ligne][colonne].etat = 1;
+        foret[ligne-1][colonne-1].etat = 1;
+        printf("Cellule en feu à la ligne %d, colonne %d\n", ligne, colonne);
     } else {
-        printf("Coordonnées invalides. Veuillez choisir une cellule à l'intérieur des limites de la matrice\n");
+        printf("Coordonnees invalides. Veuillez choisir une cellule à l\'interieur des limites de la matrice\n");
     }
 }
-

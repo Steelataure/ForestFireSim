@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <string.h>
 #include "main.h"
 #include "simulation.h"
 
@@ -24,27 +25,7 @@ void initialiserForetAleatoirement(struct CelluleForet foret[][100], struct Tail
             foret[i][j].type = typesPossibles[indexType];
             foret[i][j].etat = 0;
             foret[i][j].degre = 0;
-        }
-    }
-}
 
-void afficherMatrice(struct CelluleForet foret[][100], struct TailleMatrice taille) {
-    for (int i = 0; i < taille.longueur; i++) {
-        for (int j = 0; j < taille.largeur; j++) {
-            printf("%c ", foret[i][j].type);
-        }
-        printf("\n");
-    }
-}
-
-void typeManuel(struct CelluleForet foret[][100], struct TailleMatrice taille) {
-
-    for (int i = 0; i < taille.longueur; i++) {
-        for (int j = 0; j < taille.largeur; j++) {
-            printf("Entrez le type de la cellule [%d][%d] (A pour arbre, F pour feuille, R pour roche, etc.) : ", i, j);
-            scanf(" %c", &foret[i][j].type);
-
-            foret[i][j].etat = 0;
             if (foret[i][j].type == '*') {
                 foret[i][j].degre = 4;
             }
@@ -67,6 +48,25 @@ void typeManuel(struct CelluleForet foret[][100], struct TailleMatrice taille) {
     }
 }
 
+void afficherMatrice(struct CelluleForet foret[][100], struct TailleMatrice taille) {
+    for (int i = 0; i < taille.longueur; i++) {
+        for (int j = 0; j < taille.largeur; j++) {
+            printf("%c ", foret[i][j].type);
+        }
+        printf("\n");
+    }
+}
+
+void typeManuel(struct CelluleForet foret[][100], struct TailleMatrice taille) {
+
+    for (int i = 0; i < taille.longueur; i++) {
+        for (int j = 0; j < taille.largeur; j++) {
+            printf("Entrez le type de la cellule [%d][%d] (A pour arbre, F pour feuille, R pour roche, etc.) : ", i, j);
+            scanf(" %c", &foret[i][j].type);
+        }
+    }
+}
+
 
 int main() {
     int automatique_or_manuel;
@@ -75,7 +75,7 @@ int main() {
     struct TailleMatrice tailleMatrice = demanderTailleMatrice();
     struct CelluleForet foret[100][100];
 
-    printf("Veuillez choisir entre une saisie manuelle ou automatique (0 => manuelle | 1 => automatique) : ");
+    printf("Veuillez choisir entre une saisie manuelle ou automatique \n(0 => manuelle | 1 => automatique) : ");
     scanf("%d", &automatique_or_manuel);
 
     if (automatique_or_manuel == 0){
@@ -86,7 +86,7 @@ int main() {
     }
     afficherMatrice(foret, tailleMatrice);
 
-    printf("Veuillez choisir le nombre d'itérations : ");
+    printf("Veuillez choisir le nombre d\'iterations : ");
     scanf("%d", &nb_iterations);
 
 
