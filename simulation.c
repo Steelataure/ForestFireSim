@@ -16,7 +16,6 @@ void simulerPropagationFeu(struct CelluleForet foret[][100], struct TailleMatric
     for (int iter = 0; iter < nb_iterations; iter++) {
         for (int i = 0; i < taille.longueur; i++) {
             for (int j = 0; j < taille.largeur; j++) {
-                //printf("%d %d \n", foret[i][j].degre, foret[i][j].etat);
                 if (foret[i][j].etat == 1 && foret[i][j].degre == 2) {
                    foret[i][j].etat = 0;
                    foret[i][j].type = '-';
@@ -41,6 +40,10 @@ void simulerPropagationFeu(struct CelluleForet foret[][100], struct TailleMatric
                 }
                 if (foret[i][j].etat == 1 &&  foret[i][j].degre > 2) {
                     foret[i][j].degre -= 1;
+                }
+                if (foret[i][j].type == '+' ||  foret[i][j].type == '/') {
+                    foret[i][j].degre = 0;
+                    foret[i][j].etat = 0;
                 }
             }
         }
