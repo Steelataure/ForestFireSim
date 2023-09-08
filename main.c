@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <time.h>
 #include "main.h"
+#include "simulation.h"
+
 
 struct TailleMatrice demanderTailleMatrice() {
     struct TailleMatrice taille;
@@ -11,8 +13,6 @@ struct TailleMatrice demanderTailleMatrice() {
     scanf("%d", &taille.largeur);
     return taille;
 }
-
-
 
 void initialiserForetAleatoirement(struct CelluleForet foret[][100], struct TailleMatrice taille) {
     srand(time(NULL));
@@ -47,20 +47,26 @@ void typeManuel(struct CelluleForet foret[][100], struct TailleMatrice taille) {
             foret[i][j].etat = 0;
             if (foret[i][j].type == '*') {
                 foret[i][j].degre = 4;
-            } else if (foret[i][j].type == 'x') {
+            }
+            else if (foret[i][j].type == 'x') {
                 foret[i][j].degre = 3;
-            } else if (foret[i][j].type == '" "') {
+            }
+            else if (foret[i][j].type == ' ') {
                 foret[i][j].degre = 2;
-            } else if (foret[i][j].type == '-') {
+            }
+            else if (foret[i][j].type == '-') {
                 foret[i][j].degre = 1;
-            } else if (foret[i][j].type == '#') {
+            }
+            else if (foret[i][j].type == '#') {
                 foret[i][j].degre = 5;
-            } else {
+            }
+            else {
                 foret[i][j].degre = 0;
             }
         }
     }
 }
+
 
 int main() {
     int automatique_or_manuel;
@@ -69,7 +75,7 @@ int main() {
     struct TailleMatrice tailleMatrice = demanderTailleMatrice();
     struct CelluleForet foret[100][100];
 
-    printf("Veuillez choisir entre une saisi manuel ou automatique (0 => manuel | 1 => automatique) : ");
+    printf("Veuillez choisir entre une saisie manuelle ou automatique (0 => manuelle | 1 => automatique) : ");
     scanf("%d", &automatique_or_manuel);
 
     if (automatique_or_manuel == 0){
@@ -80,10 +86,13 @@ int main() {
     }
     afficherMatrice(foret, tailleMatrice);
 
-
-    printf("Veuillez choisir le nombre d'iterations : ");
+    printf("Veuillez choisir le nombre d'itérations : ");
     scanf("%d", &nb_iterations);
 
 
+
+    simulerPropagationFeu(foret, tailleMatrice, nb_iterations);
+
     return 0;
 }
+

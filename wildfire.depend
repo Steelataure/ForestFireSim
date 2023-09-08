@@ -7,3 +7,18 @@
 
 1693567027 c:\users\alexa\documents\wildfire\main.h
 
+1694200021 source:c:\users\alexa\onedrive\bureau\forestfiresim\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	"main.h"
+	"simulation.h"
+
+1694199608 c:\users\alexa\onedrive\bureau\forestfiresim\main.h
+
+1694199531 c:\users\alexa\onedrive\bureau\forestfiresim\simulation.h
+	"main.h"
+
+1694200100 source:c:\users\alexa\onedrive\bureau\forestfiresim\simulation.c
+	"simulation.h"
+
