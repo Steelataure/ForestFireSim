@@ -1,7 +1,8 @@
 #include "simulation.h"
+#include "init.h"
 
 
-void simulerPropagationFeu(struct CelluleForet foret[][100], struct TailleMatrice taille, int nb_iterations) {
+void simulerPropagationFeu(struct CelluleForet foret[100][100], struct TailleMatrice taille, int nb_iterations) {
     struct CelluleForet foretSuivante[100][100];
 
     int ligne_feu, colonne_feu;
@@ -55,7 +56,7 @@ void simulerPropagationFeu(struct CelluleForet foret[][100], struct TailleMatric
 }
 
 
-void mettreCelluleEnFeu(struct CelluleForet foret[][100], int ligne, int colonne, struct TailleMatrice tailleMatrice) {
+void mettreCelluleEnFeu(struct CelluleForet foret[100][100], int ligne, int colonne, struct TailleMatrice tailleMatrice) {
     if (ligne >= 0 && ligne < tailleMatrice.longueur && colonne >= 0 && colonne < tailleMatrice.largeur) {
         foret[ligne-1][colonne-1].etat = 1;
         printf("Cellule en feu à la ligne %d, colonne %d\n", ligne, colonne);

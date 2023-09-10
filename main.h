@@ -1,20 +1,19 @@
 #ifndef MAIN_H_INCLUDED
 #define MAIN_H_INCLUDED
 
-
-typedef struct TailleMatrice TailleMatrice;
 struct TailleMatrice {
     int longueur;
     int largeur;
 };
 
-typedef struct CelluleForet CelluleForet;
 struct CelluleForet {
     char type;
     int etat;
     int degre;
-
 };
 
+struct TailleMatrice demanderTailleMatrice();
+void initialiserForetAleatoirement(struct CelluleForet foret[100][100], struct TailleMatrice taille);
+void afficherMatrice(struct CelluleForet foret[100][100], struct TailleMatrice taille);
 
 #endif // MAIN_H_INCLUDED
