@@ -7,32 +7,35 @@
 
 1693567027 c:\users\alexa\documents\wildfire\main.h
 
-1694334567 source:c:\users\alexa\onedrive\bureau\forestfiresim\main.c
+1694371450 source:c:\users\alexa\onedrive\bureau\forestfiresim\main.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
 	<string.h>
 	"main.h"
+	"menu.h"
 	"init.h"
 	"simulation.h"
 
 1694335444 c:\users\alexa\onedrive\bureau\forestfiresim\main.h
 
-1694335266 c:\users\alexa\onedrive\bureau\forestfiresim\simulation.h
-	"main.h"
-	"init.h"
+1694371481 c:\users\alexa\onedrive\bureau\forestfiresim\simulation.h
 
-1694335286 source:c:\users\alexa\onedrive\bureau\forestfiresim\simulation.c
+1694371151 source:c:\users\alexa\onedrive\bureau\forestfiresim\simulation.c
 	"simulation.h"
 	"init.h"
 
-1694335293 c:\users\alexa\onedrive\bureau\forestfiresim\init.h
-	"main.h"
+1694371397 c:\users\alexa\onedrive\bureau\forestfiresim\init.h
 
-1694335250 source:c:\users\alexa\onedrive\bureau\forestfiresim\init.c
+1694335467 source:c:\users\alexa\onedrive\bureau\forestfiresim\init.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
 	"init.h"
 	"main.h"
+
+1694371393 c:\users\alexa\onedrive\bureau\forestfiresim\menu.h
+
+1694371462 source:c:\users\alexa\onedrive\bureau\forestfiresim\menu.c
+	"menu.h"
 

@@ -2,8 +2,12 @@
 #include "init.h"
 
 
-void simulerPropagationFeu(struct CelluleForet foret[100][100], struct TailleMatrice taille, int nb_iterations) {
+void simulerPropagationFeu(struct CelluleForet foret[100][100], struct TailleMatrice taille) {
     struct CelluleForet foretSuivante[100][100];
+
+    int nb_iterations;
+    printf("Veuillez choisir le nombre d\'iterations : ");
+    scanf("%d", &nb_iterations);
 
     int ligne_feu, colonne_feu;
     printf("Entrez la ligne de la cellule en feu : ");
@@ -51,7 +55,7 @@ void simulerPropagationFeu(struct CelluleForet foret[100][100], struct TailleMat
 
         memcpy(foretSuivante, foret, sizeof(foret));
         afficherMatrice(foret, taille);
-        printf("-----------------------------------------------\n");
+        printf("----------------------------------\n");
     }
 }
 

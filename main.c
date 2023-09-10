@@ -4,6 +4,7 @@
 #include <string.h>
 
 #include "main.h"
+#include "menu.h"
 #include "init.h"
 #include "simulation.h"
 
@@ -27,31 +28,41 @@ void afficherMatrice(struct CelluleForet foret[100][100], struct TailleMatrice t
     }
 }
 
+void choiceManuAuto(struct CelluleForet foret[100][100], struct TailleMatrice taille){
+    int automatique_or_manuel;
+
+    printf("Veuillez choisir entre une saisie manuel ou automatique \n1) Automatique\n2) Manuel \n> ");
+    scanf("%d", &automatique_or_manuel);
+
+    switch (automatique_or_manuel){
+    case 1:
+        initialiserForetAleatoirement(foret, taille);
+        break;
+    case 2:
+        typeManuel(foret, taille);
+        break;
+    default:
+        printf("-----------------------------------------\n");
+        printf("Vous n'avez pas saisi une reponse valable\n");
+        printf("-----------------------------------------\n");
+        choiceManuAuto(foret, taille);
+        break;
+    }
+}
 
 int main() {
-    int automatique_or_manuel;
-    int nb_iterations;
+    printf("------------------------------------------\n");
+    printf(">>> PROJET SIMULATION DE FEU DE FORET <<< \n");
+    printf("------------------------------------------\n");
 
+    menu();
     struct TailleMatrice tailleMatrice = demanderTailleMatrice();
     struct CelluleForet foret[100][100];
 
-    printf("Veuillez choisir entre une saisie manuelle ou automatique \n(0 => manuelle | 1 => automatique) : ");
-    scanf("%d", &automatique_or_manuel);
-
-    if (automatique_or_manuel == 0){
-        typeManuel(foret, tailleMatrice);
-    }
-    else if (automatique_or_manuel == 1){
-        initialiserForetAleatoirement(foret, tailleMatrice);
-    }
+    choiceManuAuto(foret, tailleMatrice);
     afficherMatrice(foret, tailleMatrice);
-
-    printf("Veuillez choisir le nombre d\'iterations : ");
-    scanf("%d", &nb_iterations);
-
-
-    simulerPropagationFeu(foret, tailleMatrice, nb_iterations);
-
+    simulerPropagationFeu(foret, tailleMatrice);
+    endMenu();
     return 0;
 }
 

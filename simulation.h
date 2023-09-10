@@ -4,7 +4,7 @@
 #include "main.h"
 #include "init.h"
 
-void simulerPropagationFeu(struct CelluleForet foret[100][100], struct TailleMatrice taille, int nb_iterations);
+void simulerPropagationFeu(struct CelluleForet foret[100][100], struct TailleMatrice taille);
 void mettreCelluleEnFeu(struct CelluleForet foret[100][100], int ligne, int colonne, struct TailleMatrice taille);
 
 #endif // SIMULATION_H_INCLUDED
