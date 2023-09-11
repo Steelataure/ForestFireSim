@@ -2,7 +2,11 @@
 #define MENU_C_INCLUDED
 
 #include "menu.h"
+#include "main.h"
+#include "simulation.h"
 
+extern struct TailleMatrice tailleMatrice;
+extern struct CelluleForet foret[100][100];
 
 void menu(){
     int endchoice;
@@ -45,10 +49,12 @@ void endMenu(){
 
     switch (endchoice){
     case 1:
+        //simulerPropagationFeu(foret, tailleMatrice);
         break;
     case 2:
         break;
     case 3:
+        main();
         break;
     case 4:
         exit(0);

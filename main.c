@@ -8,6 +8,8 @@
 #include "init.h"
 #include "simulation.h"
 
+struct TailleMatrice tailleMatrice;
+struct CelluleForet foret[100][100];
 
 struct TailleMatrice demanderTailleMatrice() {
     struct TailleMatrice taille;
@@ -57,7 +59,6 @@ int main() {
 
     menu();
     struct TailleMatrice tailleMatrice = demanderTailleMatrice();
-    struct CelluleForet foret[100][100];
 
     choiceManuAuto(foret, tailleMatrice);
     afficherMatrice(foret, tailleMatrice);
