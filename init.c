@@ -92,7 +92,9 @@ void choiceManuAuto(struct CelluleForet foret[100][100], struct TailleMatrice ta
         typeManuel(foret, taille);
         break;
     default:
-        wrongInput();
+        printf("-----------------------------------------\n");
+        printf("Vous n'avez pas saisi une reponse valable\n");
+        printf("-----------------------------------------\n");
         choiceManuAuto(foret, taille);
         break;
     }

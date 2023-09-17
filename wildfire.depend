@@ -19,13 +19,13 @@
 	"main.h"
 	"init.h"
 
-1694959256 source:c:\users\alexa\onedrive\bureau\forestfiresim\simulation.c
+1694960341 source:c:\users\alexa\onedrive\bureau\forestfiresim\simulation.c
 	"simulation.h"
 	"init.h"
 
 1694958684 c:\users\alexa\onedrive\bureau\forestfiresim\init.h
 
-1694958665 source:c:\users\alexa\onedrive\bureau\forestfiresim\init.c
+1694960383 source:c:\users\alexa\onedrive\bureau\forestfiresim\init.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>

@@ -28,12 +28,17 @@ void simulerPropagationFeu(struct CelluleForet foret[100][100], struct TailleMat
         }
         for (int i = 0; i < taille.longueur; i++) {
             for (int j = 0; j < taille.largeur; j++) {
-                if (foret[i][j].etat == 1 && foret[i][j].degre == 2) {
-                    foret[i][j].etat = 0;
-                    foret[i][j].type = '@';
+                if (foret[i][j].etat == 1){
+                    if (foret[i][j].degre == 2){
+                        foret[i][j].etat = 0;
+                        foret[i][j].type = '-';
+                    }
+                    else if (foret[i][j].degre > 2){
+                        foret[i][j].degre -= 1;
+                    }
                 }
-                else if (foret[i][j].type == '@') {
-                    foret[i][j].type = '-';
+                else if (foret[i][j].type == '-') {
+                    foret[i][j].type = '@';
                 }
 
                 if (foret[i][j].type == '#' || foret[i][j].type == 'x' || foret[i][j].type == '*' || foret[i][j].type == ' ') {
@@ -50,13 +55,11 @@ void simulerPropagationFeu(struct CelluleForet foret[100][100], struct TailleMat
                         foret[i][j].degre -= 1;
                     }
                 }
-                if (foret[i][j].etat == 1 && foret[i][j].degre > 2) {
-                    foret[i][j].degre -= 1;
-                }
                 if (foret[i][j].type == '+' || foret[i][j].type == '/') {
                     foret[i][j].degre = 0;
                     foret[i][j].etat = 0;
                 }
+
             }
         }
         memcpy(foretSuivante, foret, sizeof(foret));
