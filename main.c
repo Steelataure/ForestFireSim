@@ -1,34 +1,13 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-#include <string.h>
 
 #include "main.h"
-#include "menu.h"
 #include "init.h"
+#include "menu.h"
 #include "simulation.h"
 
-struct TailleMatrice tailleMatrice;
-struct CelluleForet foret[100][100];
+extern struct TailleMatrice tailleMatrice;
+extern struct CelluleForet foret[100][100];
+extern struct CelluleForet foretInitiale[100][100];
 
-struct TailleMatrice demanderTailleMatrice() {
-    struct TailleMatrice taille;
-    printf("Veuillez entrer la longueur de la matrice : ");
-    scanf("%d", &taille.longueur);
-    printf("Veuillez entrer la largeur de la matrice : ");
-    scanf("%d", &taille.largeur);
-    return taille;
-}
-
-
-void afficherMatrice(struct CelluleForet foret[100][100], struct TailleMatrice taille) {
-    for (int i = 0; i < taille.longueur; i++) {
-        for (int j = 0; j < taille.largeur; j++) {
-            printf("%c ", foret[i][j].type);
-        }
-        printf("\n");
-    }
-}
 
 void choiceManuAuto(struct CelluleForet foret[100][100], struct TailleMatrice taille){
     int automatique_or_manuel;
@@ -63,7 +42,7 @@ int main() {
     choiceManuAuto(foret, tailleMatrice);
     afficherMatrice(foret, tailleMatrice);
     simulerPropagationFeu(foret, tailleMatrice);
-    endMenu();
+    simulMenu();
     return 0;
 }
 

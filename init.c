@@ -1,9 +1,33 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <string.h>
+
 
 #include "init.h"
-#include "main.h"
+
+
+struct TailleMatrice tailleMatrice;
+struct CelluleForet foret[100][100];
+
+struct TailleMatrice demanderTailleMatrice() {
+    struct TailleMatrice taille;
+    printf("Veuillez entrer la longueur de la matrice : ");
+    scanf("%d", &taille.longueur);
+    printf("Veuillez entrer la largeur de la matrice : ");
+    scanf("%d", &taille.largeur);
+    return taille;
+}
+
+
+void afficherMatrice(struct CelluleForet foret[100][100], struct TailleMatrice taille) {
+    for (int i = 0; i < taille.longueur; i++) {
+        for (int j = 0; j < taille.largeur; j++) {
+            printf("%c ", foret[i][j].type);
+        }
+        printf("\n");
+    }
+}
 
 // Fonction pour initialiser la forêt aléatoirement
 void initialiserForetAleatoirement(struct CelluleForet foret[100][100], struct TailleMatrice taille) {
