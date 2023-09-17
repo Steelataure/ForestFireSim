@@ -23,17 +23,17 @@ void simulerPropagationFeu(struct CelluleForet foret[100][100], struct TailleMat
     mettreCelluleEnFeu(foret, ligne_feu, colonne_feu, taille);
 
     for (int iter = 0; iter < nb_iterations; iter++) {
-        //if (iter >= 1) {
-         //   revenirEnArriere(foret, foretInitiale, taille);
-        //}
+        if (iter >= 1) {
+            simulMenu();
+        }
         for (int i = 0; i < taille.longueur; i++) {
             for (int j = 0; j < taille.largeur; j++) {
                 if (foret[i][j].etat == 1 && foret[i][j].degre == 2) {
                     foret[i][j].etat = 0;
-                    foret[i][j].type = '-';
-                }
-                if (foret[i][j].type == '-') {
                     foret[i][j].type = '@';
+                }
+                else if (foret[i][j].type == '@') {
+                    foret[i][j].type = '-';
                 }
 
                 if (foret[i][j].type == '#' || foret[i][j].type == 'x' || foret[i][j].type == '*' || foret[i][j].type == ' ') {
@@ -79,6 +79,11 @@ void revenirEnArriere(struct CelluleForet foret[100][100], struct CelluleForet f
 
     printf("Veuillez choisir le nombre d'iterations en arriere : ");
     scanf("%d", &nb_iterations_arriere);
+
+    if (nb_iterations_arriere <= 0) {
+        printf("Le nombre d'iterations en arriere doit etre superieur a zero\n");
+        return;
+    }
 
     for (int iter = 0; iter < nb_iterations_arriere; iter++) {
         // Restaurer la forêt

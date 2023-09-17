@@ -19,7 +19,6 @@ struct TailleMatrice demanderTailleMatrice() {
     return taille;
 }
 
-
 void afficherMatrice(struct CelluleForet foret[100][100], struct TailleMatrice taille) {
     for (int i = 0; i < taille.longueur; i++) {
         for (int j = 0; j < taille.largeur; j++) {
@@ -71,5 +70,30 @@ void typeManuel(struct CelluleForet foret[100][100], struct TailleMatrice taille
             printf("Entrez le type de la cellule [%d][%d]: ", i, j);
             scanf(" %c", &foret[i][j].type);
         }
+    }
+}
+
+
+void choiceManuAuto(struct CelluleForet foret[100][100], struct TailleMatrice taille){
+    int automatique_or_manuel;
+
+    printf("Que voulez vous faire ?\n");
+    printf("1) Matrice aleatoire ?\n");
+    printf("2) Matrice manuelle ?\n");
+    printf("> ");
+    scanf("%d", &automatique_or_manuel);
+    printf("------------------------\n");
+
+    switch (automatique_or_manuel){
+    case 1:
+        initialiserForetAleatoirement(foret, taille);
+        break;
+    case 2:
+        typeManuel(foret, taille);
+        break;
+    default:
+        wrongInput();
+        choiceManuAuto(foret, taille);
+        break;
     }
 }

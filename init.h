@@ -18,6 +18,6 @@ void afficherMatrice(struct CelluleForet foret[100][100], struct TailleMatrice t
 
 void initialiserForetAleatoirement(struct CelluleForet foret[100][100], struct TailleMatrice taille);
 void typeManuel(struct CelluleForet foret[100][100], struct TailleMatrice taille);
-
+void choiceManuAuto(struct CelluleForet foret[100][100], struct TailleMatrice taille);
 
 #endif // INIT_H_INCLUDED
