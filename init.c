@@ -67,7 +67,10 @@ void typeManuel(struct CelluleForet foret[100][100], struct TailleMatrice taille
 
     for (int i = 0; i < taille.longueur; i++) {
         for (int j = 0; j < taille.largeur; j++) {
-            printf("Entrez le type de la cellule [%d][%d]: ", i, j);
+            printf("Entrez le type de la cellule [%d][%d] ", i, j);
+            printf("\n(+ => sol, * => arbre, => feuille, # => roche, x => herbe, / => eau)");
+            printf("\n >>> ");
+
             scanf(" %c", &foret[i][j].type);
         }
     }

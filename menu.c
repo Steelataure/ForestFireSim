@@ -32,14 +32,15 @@ void menu(){
         }
 }
 
-void simulMenu(){
+void simulMenu(struct TailleMatrice tailleMatrice){
+
     int choice;
     int nombreIterations;
 
     printf("Que voulez vous faire ?\n");
     printf("1) Conitnuer ?\n");
     printf("2) Revenir en arriere ?\n");
-    printf("3) Changer l\'etat d\'une case ?\n");
+    printf("3) Changer les caractéritiques d\'une case ?\n");
     printf("4) Refaire une autre simulation\n");
     printf("5) Quitter\n");
     printf("> ");
@@ -53,19 +54,18 @@ void simulMenu(){
             revenirEnArriere(foret, foretInitiale, tailleMatrice);
             break;
         case 3:
+            cellFeatureChange(foret, TailleMatrice);
             break;
         case 4:
             main();
             break;
         case 5:
             exit(0);
-
         default:
             wrongInput();
             break;
 
         }
-
 }
 
 void wrongInput(){

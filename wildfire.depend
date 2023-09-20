@@ -39,3 +39,35 @@
 	"init.h"
 	"simulation.h"
 
+1695211298 source:c:\users\alexa\desktop\forestfiresim\init.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"init.h"
+
+1695208017 c:\users\alexa\desktop\forestfiresim\init.h
+
+1695208017 source:c:\users\alexa\desktop\forestfiresim\main.c
+	"main.h"
+	"init.h"
+	"menu.h"
+	"simulation.h"
+
+1695208017 c:\users\alexa\desktop\forestfiresim\main.h
+
+1695218622 c:\users\alexa\desktop\forestfiresim\menu.h
+
+1695218263 c:\users\alexa\desktop\forestfiresim\simulation.h
+	"main.h"
+	"init.h"
+
+1695218406 source:c:\users\alexa\desktop\forestfiresim\simulation.c
+	"simulation.h"
+	"init.h"
+
+1695210846 source:c:\users\alexa\desktop\forestfiresim\menu.c
+	"menu.h"
+	"init.h"
+	"simulation.h"
+

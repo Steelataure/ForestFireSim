@@ -38,6 +38,7 @@ void simulerPropagationFeu(struct CelluleForet foret[100][100], struct TailleMat
                     }
                 }
                 else if (foret[i][j].type == '-') {
+
                     foret[i][j].type = '@';
                 }
 
@@ -76,6 +77,22 @@ void mettreCelluleEnFeu(struct CelluleForet foret[100][100], int ligne, int colo
         printf("Coordonnees invalides. Veuillez choisir une cellule à l\'interieur des limites de la matrice\n");
     }
 }
+
+void CellFeatureChange(struct CelluleForet foret[100][100], struct TailleMatrice taille){
+    int choice_statut;
+    int cell_position;
+
+    printf("Donner la position de la case à changer [ligne][colonne] ?\n");
+    scanf("%d", &cell_position);
+
+    printf("Que voulez-vous changer ?\n");
+    printf("1) Le type ?\n");
+    printf("2) L'état ?\n");
+    printf("3) Le degré ?\n");
+    scanf("%d", &choice_statut);
+
+}
+
 
 void revenirEnArriere(struct CelluleForet foret[100][100], struct CelluleForet foretInitiale[100][100], struct TailleMatrice taille) {
     int nb_iterations_arriere;
