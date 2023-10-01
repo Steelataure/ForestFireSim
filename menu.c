@@ -5,7 +5,6 @@
 #include "init.h"
 #include "simulation.h"
 
-extern struct TailleMatrice tailleMatrice;
 extern struct CelluleForet foret[100][100];
 extern struct CelluleForet foretInitiale[100][100];
 
@@ -20,7 +19,6 @@ void menu(){
 
     switch (choice){
         case 1:
-            //struct TailleMatrice tailleMatrice = demanderTailleMatrice();
             break;
         case 2:
             exit(0);
@@ -31,41 +29,38 @@ void menu(){
             break;
         }
 }
-
-void simulMenu(struct TailleMatrice tailleMatrice){
-
+int simulMenu(int hauteur, int largeur) {
     int choice;
-    int nombreIterations;
+    int continuer = 1;
 
     printf("Que voulez vous faire ?\n");
-    printf("1) Conitnuer ?\n");
+    printf("1) Continuer ?\n");
     printf("2) Revenir en arriere ?\n");
-    printf("3) Changer les caractéritiques d\'une case ?\n");
+    printf("3) Changer les caracteritiques d'une case ?\n");
     printf("4) Refaire une autre simulation\n");
     printf("5) Quitter\n");
     printf("> ");
-
     scanf("%d", &choice);
 
     switch (choice){
         case 1:
             break;
         case 2:
-            revenirEnArriere(foret, foretInitiale, tailleMatrice);
+            revenirEnArriere(foret, foretInitiale, hauteur, largeur);
             break;
         case 3:
-            cellFeatureChange(foret, TailleMatrice);
+            cellFeatureChange(foret, hauteur, largeur);
             break;
         case 4:
-            main();
+            continuer = 0;
             break;
         case 5:
             exit(0);
         default:
             wrongInput();
             break;
-
-        }
+    }
+    return continuer;
 }
 
 void wrongInput(){

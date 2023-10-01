@@ -7,21 +7,20 @@
 #include "init.h"
 
 
-struct TailleMatrice tailleMatrice;
 struct CelluleForet foret[100][100];
 
-struct TailleMatrice demanderTailleMatrice() {
-    struct TailleMatrice taille;
-    printf("Veuillez entrer la longueur de la matrice : ");
-    scanf("%d", &taille.longueur);
-    printf("Veuillez entrer la largeur de la matrice : ");
-    scanf("%d", &taille.largeur);
-    return taille;
+
+void demanderTailleMatrice(int *hauteur, int *largeur) {
+    printf("Entrez la hauteur de la matrice : ");
+    scanf("%d", hauteur);
+    printf("Entrez la largeur de la matrice : ");
+    scanf("%d", largeur);
 }
 
-void afficherMatrice(struct CelluleForet foret[100][100], struct TailleMatrice taille) {
-    for (int i = 0; i < taille.longueur; i++) {
-        for (int j = 0; j < taille.largeur; j++) {
+
+void afficherMatrice(struct CelluleForet foret[100][100], int hauteur, int largeur) {
+    for (int i = 0; i < hauteur; i++) {
+        for (int j = 0; j < largeur; j++) {
             printf("%c ", foret[i][j].type);
         }
         printf("\n");
@@ -29,15 +28,16 @@ void afficherMatrice(struct CelluleForet foret[100][100], struct TailleMatrice t
 }
 
 // Fonction pour initialiser la forêt aléatoirement
-void initialiserForetAleatoirement(struct CelluleForet foret[100][100], struct TailleMatrice taille) {
+void initialiserForetAleatoirement(struct CelluleForet foret[100][100], int hauteur, int largeur) {
     srand(time(NULL));
 
-    for (int i = 0; i < taille.longueur; i++) {
-        for (int j = 0; j < taille.largeur; j++) {
+    for (int i = 0; i < hauteur; i++) {
+        for (int j = 0; j < largeur; j++) {
             char typesPossibles[] = {'+', '*', ' ', '#', 'x', '/'};
             int indexType = rand() % 6;
             foret[i][j].type = typesPossibles[indexType];
             foret[i][j].etat = 0;
+
             foret[i][j].degre = 0;
 
             if (foret[i][j].type == '*') {
@@ -63,10 +63,10 @@ void initialiserForetAleatoirement(struct CelluleForet foret[100][100], struct T
 }
 
 // Fonction pour initialiser la forêt manuellement
-void typeManuel(struct CelluleForet foret[100][100], struct TailleMatrice taille) {
+void typeManuel(struct CelluleForet foret[100][100], int hauteur, int largeur) {
 
-    for (int i = 0; i < taille.longueur; i++) {
-        for (int j = 0; j < taille.largeur; j++) {
+    for (int i = 0; i < hauteur; i++) {
+        for (int j = 0; j < largeur; j++) {
             printf("Entrez le type de la cellule [%d][%d] ", i, j);
             printf("\n(+ => sol, * => arbre, => feuille, # => roche, x => herbe, / => eau)");
             printf("\n >>> ");
@@ -77,7 +77,7 @@ void typeManuel(struct CelluleForet foret[100][100], struct TailleMatrice taille
 }
 
 
-void choiceManuAuto(struct CelluleForet foret[100][100], struct TailleMatrice taille){
+void choiceManuAuto(struct CelluleForet foret[100][100], int hauteur, int largeur){
     int automatique_or_manuel;
 
     printf("Que voulez vous faire ?\n");
@@ -89,16 +89,21 @@ void choiceManuAuto(struct CelluleForet foret[100][100], struct TailleMatrice ta
 
     switch (automatique_or_manuel){
     case 1:
-        initialiserForetAleatoirement(foret, taille);
+        initialiserForetAleatoirement(foret, hauteur, largeur);
         break;
     case 2:
-        typeManuel(foret, taille);
+        typeManuel(foret, hauteur, largeur);
         break;
     default:
         printf("-----------------------------------------\n");
         printf("Vous n'avez pas saisi une reponse valable\n");
         printf("-----------------------------------------\n");
-        choiceManuAuto(foret, taille);
+        choiceManuAuto(foret, hauteur, largeur);
         break;
     }
+}
+
+// Réinitialisez les éléments par défauts
+void relancerSimulation(struct CelluleForet foret[100][100], int hauteur, int largeur) {
+    initialiserForetAleatoirement(foret, hauteur, largeur);
 }

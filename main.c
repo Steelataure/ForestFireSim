@@ -3,9 +3,8 @@
 #include "menu.h"
 #include "simulation.h"
 
-extern struct TailleMatrice tailleMatrice;
-extern struct CelluleForet foret[100][100];
-extern struct CelluleForet foretInitiale[100][100];
+struct CelluleForet foret[100][100];
+struct CelluleForet foretInitiale[100][100];
 
 
 int main() {
@@ -13,13 +12,18 @@ int main() {
     printf(">>> PROJET SIMULATION DE FEU DE FORET <<< \n");
     printf("------------------------------------------\n");
 
-    menu();
-    struct TailleMatrice tailleMatrice = demanderTailleMatrice();
+    int hauteur, largeur;
+    demanderTailleMatrice(&hauteur, &largeur);
 
-    choiceManuAuto(foret, tailleMatrice);
-    afficherMatrice(foret, tailleMatrice);
-    simulerPropagationFeu(foret, tailleMatrice);
-    simulMenu();
+    choiceManuAuto(foret, hauteur, largeur);
+
+    afficherMatrice(foret, hauteur, largeur);
+    simulerPropagationFeu(foret, hauteur, largeur);
+    simulMenu(hauteur, largeur);
+
+
     return 0;
 }
+
+
 

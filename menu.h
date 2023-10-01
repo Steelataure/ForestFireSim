@@ -3,7 +3,7 @@
 
 
 void menu();
-void simulMenu();
+int simulMenu();
 void wrongInput();
 
 

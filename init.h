@@ -1,11 +1,6 @@
+// init.h
 #ifndef INIT_H_INCLUDED
 #define INIT_H_INCLUDED
-
-
-struct TailleMatrice {
-    int longueur;
-    int largeur;
-};
 
 struct CelluleForet {
     char type;
@@ -13,11 +8,12 @@ struct CelluleForet {
     int degre;
 };
 
-struct TailleMatrice demanderTailleMatrice();
-void afficherMatrice(struct CelluleForet foret[100][100], struct TailleMatrice taille);
+void afficherMatrice(struct CelluleForet foret[100][100], int hauteur, int largeur);
+//struct TailleMatrice demanderTailleMatrice();
+void initialiserForetAleatoirement(struct CelluleForet foret[100][100], int hauteur, int largeur);
+void typeManuel(struct CelluleForet foret[100][100], int hauteur, int largeur);
+void choiceManuAuto(struct CelluleForet foret[100][100], int hauteur, int largeur);
 
-void initialiserForetAleatoirement(struct CelluleForet foret[100][100], struct TailleMatrice taille);
-void typeManuel(struct CelluleForet foret[100][100], struct TailleMatrice taille);
-void choiceManuAuto(struct CelluleForet foret[100][100], struct TailleMatrice taille);
+void demanderTailleMatrice(int *hauteur, int *largeur);
 
 #endif // INIT_H_INCLUDED
