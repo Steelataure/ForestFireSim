@@ -31,7 +31,6 @@ void menu(){
 }
 int simulMenu(int hauteur, int largeur) {
     int choice;
-    int continuer = 1;
 
     printf("Que voulez vous faire ?\n");
     printf("1) Continuer ?\n");
@@ -52,7 +51,6 @@ int simulMenu(int hauteur, int largeur) {
             cellFeatureChange(foret, hauteur, largeur);
             break;
         case 4:
-            continuer = 0;
             break;
         case 5:
             exit(0);
@@ -60,7 +58,7 @@ int simulMenu(int hauteur, int largeur) {
             wrongInput();
             break;
     }
-    return continuer;
+    return 0;
 }
 
 void wrongInput(){

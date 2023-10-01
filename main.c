@@ -18,6 +18,7 @@ int main() {
     choiceManuAuto(foret, hauteur, largeur);
 
     afficherMatrice(foret, hauteur, largeur);
+
     simulerPropagationFeu(foret, hauteur, largeur);
     simulMenu(hauteur, largeur);
 
